@@ -354,12 +354,12 @@ async function initLiveMetrics() {
         currentCount = newCount;
     }
 
-    // Initial render: Start at a base and count up rapidly to catch attention
-    currentCount = 120;
+    // Initial render: Start at a dynamic random base for every session
+    currentCount = Math.floor(Math.random() * (100 - 40 + 1)) + 40;
     updateCounter(currentCount);
 
-    // Rapid initial count-up
-    const initialTarget = Math.floor(Math.random() * (145 - 135 + 1)) + 135;
+    // Rapid initial count-up to realistic activity
+    const initialTarget = Math.floor(Math.random() * (155 - 135 + 1)) + 135;
     const initialInterval = setInterval(() => {
         if (currentCount < initialTarget) {
             updateCounter(currentCount + 1);
