@@ -306,98 +306,96 @@ async function initLiveMetrics() {
 
     if (!metricsContainer || !infoElem) return;
 
-    // 1. Initial Structure for Flip Counter
+    // 1. Initial "Fetching" State
     metricsContainer.innerHTML = `
-        <span class="pulse-dot"></span>
-        <div class="flip-counter" id="flip-counter"></div>
-        <span style="margin-left: 5px;">Live Visitors</span>
+        <span class="pulse-dot connecting"></span>
+        <span class="status-text">Connecting to secured channel...</span>
     `;
 
-    const flipCounter = document.getElementById('flip-counter');
-    let currentCount = 140;
-
-    function createDigit(value) {
-        const card = document.createElement('div');
-        card.className = 'flip-card';
-        card.innerHTML = `
-            <div class="digit-half digit-top">${value}</div>
-            <div class="digit-half digit-bottom">${value}</div>
+    // Wait 5 seconds to "feel real" as requested
+    setTimeout(() => {
+        metricsContainer.innerHTML = `
+            <span class="pulse-dot"></span>
+            <div class="flip-counter" id="flip-counter"></div>
+            <span style="margin-left: 5px;">Live Visitors</span>
         `;
-        return card;
-    }
 
-    function updateCounter(newCount) {
-        const newStr = String(newCount).padStart(3, '0');
-        const oldStr = String(currentCount).padStart(3, '0');
+        const flipCounter = document.getElementById('flip-counter');
+        let currentCount = Math.floor(Math.random() * (100 - 40 + 1)) + 40;
+        let targetCount = currentCount;
 
-        if (flipCounter.children.length === 0) {
-            [...newStr].forEach(digit => flipCounter.appendChild(createDigit(digit)));
-        } else {
-            [...newStr].forEach((digit, i) => {
-                if (digit !== oldStr[i]) {
-                    const card = flipCounter.children[i];
-                    card.classList.add('flipping');
-
-                    // Update value after top half flips (mid-animation)
-                    setTimeout(() => {
-                        card.querySelector('.digit-top').textContent = digit;
-                    }, 300);
-
-                    // Finalize animation
-                    setTimeout(() => {
-                        card.querySelector('.digit-bottom').textContent = digit;
-                        card.classList.remove('flipping');
-                    }, 600);
-                }
-            });
+        function createDigit(value) {
+            const card = document.createElement('div');
+            card.className = 'flip-card';
+            card.innerHTML = `
+                <div class="digit-half digit-top">${value}</div>
+                <div class="digit-half digit-bottom">${value}</div>
+            `;
+            return card;
         }
-        currentCount = newCount;
-    }
 
-    // Initial render: Start at a dynamic random base for every session
-    currentCount = Math.floor(Math.random() * (100 - 40 + 1)) + 40;
-    updateCounter(currentCount);
+        function updateCounter(newCount) {
+            const newStr = String(newCount).padStart(3, '0');
+            const oldStr = String(currentCount).padStart(3, '0');
 
-    // Rapid initial count-up to realistic activity
-    const initialTarget = Math.floor(Math.random() * (155 - 135 + 1)) + 135;
-    const initialInterval = setInterval(() => {
-        if (currentCount < initialTarget) {
-            updateCounter(currentCount + 1);
-        } else {
-            clearInterval(initialInterval);
+            if (flipCounter.children.length === 0) {
+                [...newStr].forEach(digit => flipCounter.appendChild(createDigit(digit)));
+            } else {
+                [...newStr].forEach((digit, i) => {
+                    if (digit !== oldStr[i]) {
+                        const card = flipCounter.children[i];
+                        card.classList.add('flipping');
+
+                        setTimeout(() => {
+                            card.querySelector('.digit-top').textContent = digit;
+                        }, 300);
+
+                        setTimeout(() => {
+                            card.querySelector('.digit-bottom').textContent = digit;
+                            card.classList.remove('flipping');
+                        }, 600);
+                    }
+                });
+            }
+            currentCount = newCount;
         }
-    }, 100);
 
-    // 2. Realistic "Wave" Fluctuation Logic
-    let targetCount = initialTarget;
+        // Initial render: Rapid initial count-up
+        updateCounter(currentCount);
+        const initialTarget = Math.floor(Math.random() * (155 - 135 + 1)) + 135;
+        const initialInterval = setInterval(() => {
+            if (currentCount < initialTarget) {
+                updateCounter(currentCount + 1);
+            } else {
+                clearInterval(initialInterval);
+                targetCount = initialTarget;
+            }
+        }, 100);
 
-    // Pick a new dramatic target every 15-25 seconds
-    setInterval(() => {
-        // High range (120-160), Med (60-120), Low (35-65) - including User's 40, 65 targets
-        const ranges = [
-            { min: 140, max: 165 },
-            { min: 110, max: 140 },
-            { min: 60, max: 110 },
-            { min: 35, max: 65 }
-        ];
-        const selected = ranges[Math.floor(Math.random() * ranges.length)];
-        targetCount = Math.floor(Math.random() * (selected.max - selected.min + 1)) + selected.min;
-    }, 18000);
+        // 2. Realistic "Wave" Fluctuation Logic
+        setInterval(() => {
+            const ranges = [
+                { min: 140, max: 165 },
+                { min: 110, max: 140 },
+                { min: 60, max: 110 },
+                { min: 35, max: 65 }
+            ];
+            const selected = ranges[Math.floor(Math.random() * ranges.length)];
+            targetCount = Math.floor(Math.random() * (selected.max - selected.min + 1)) + selected.min;
+        }, 18000);
 
-    // Drift towards target every 1.5 seconds (Faster frequency but smaller steps for smoothness)
-    setInterval(() => {
-        if (currentCount !== targetCount) {
-            const diff = targetCount - currentCount;
-            // Move 1-2 steps at a time for "fluid" feel
-            const step = Math.min(Math.abs(diff), Math.floor(Math.random() * 2) + 1);
-            const nextCount = currentCount + (diff > 0 ? step : -step);
-            updateCounter(nextCount);
-        }
-    }, 1500);
+        setInterval(() => {
+            if (currentCount !== targetCount) {
+                const diff = targetCount - currentCount;
+                const step = Math.min(Math.abs(diff), Math.floor(Math.random() * 2) + 1);
+                const nextCount = currentCount + (diff > 0 ? step : -step);
+                updateCounter(nextCount);
+            }
+        }, 1500);
+    }, 5000);
 
     // 3. Session Info (IP & Location)
     try {
-        // Using a free, reliable JSON IP/Location API
         const response = await fetch('https://ipapi.co/json/');
         const data = await response.json();
 
