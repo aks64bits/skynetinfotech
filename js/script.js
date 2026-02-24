@@ -354,35 +354,46 @@ async function initLiveMetrics() {
         currentCount = newCount;
     }
 
-    // Initial render
+    // Initial render: Start at a base and count up rapidly to catch attention
+    currentCount = 120;
     updateCounter(currentCount);
 
+    // Rapid initial count-up
+    const initialTarget = Math.floor(Math.random() * (145 - 135 + 1)) + 135;
+    const initialInterval = setInterval(() => {
+        if (currentCount < initialTarget) {
+            updateCounter(currentCount + 1);
+        } else {
+            clearInterval(initialInterval);
+        }
+    }, 100);
+
     // 2. Realistic "Wave" Fluctuation Logic
-    let targetCount = 140;
+    let targetCount = initialTarget;
 
     // Pick a new dramatic target every 15-25 seconds
     setInterval(() => {
-        // High range (120-160), Med (80-120), Low (40-80)
+        // High range (120-160), Med (60-120), Low (35-65) - including User's 40, 65 targets
         const ranges = [
-            { min: 120, max: 160 },
-            { min: 80, max: 120 },
-            { min: 40, max: 80 }
+            { min: 140, max: 165 },
+            { min: 110, max: 140 },
+            { min: 60, max: 110 },
+            { min: 35, max: 65 }
         ];
         const selected = ranges[Math.floor(Math.random() * ranges.length)];
         targetCount = Math.floor(Math.random() * (selected.max - selected.min + 1)) + selected.min;
-        console.log(`New traffic wave target: ${targetCount}`);
-    }, 20000);
+    }, 18000);
 
-    // Drift towards target every 2-4 seconds
+    // Drift towards target every 1.5 seconds (Faster frequency but smaller steps for smoothness)
     setInterval(() => {
         if (currentCount !== targetCount) {
             const diff = targetCount - currentCount;
-            // Move 1-5 steps at a time for "sequential" feel
-            const step = Math.min(Math.abs(diff), Math.floor(Math.random() * 5) + 1);
+            // Move 1-2 steps at a time for "fluid" feel
+            const step = Math.min(Math.abs(diff), Math.floor(Math.random() * 2) + 1);
             const nextCount = currentCount + (diff > 0 ? step : -step);
             updateCounter(nextCount);
         }
-    }, 3000);
+    }, 1500);
 
     // 3. Session Info (IP & Location)
     try {
