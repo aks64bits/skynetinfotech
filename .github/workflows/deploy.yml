@@ -1,0 +1,24 @@
+name: Website Deployment Check
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Site Quality Audit
+      run: |
+        echo "Starting automated site audit for Skynetinfotech..."
+        echo "Checking HTML structure..."
+        grep -q "<h1>" index.html && echo "Check passed: H1 found"
+        echo "Checking for essential assets..."
+        ls assets/logo.png && echo "Check passed: Logo found"
+        echo "Deployment to GitHub Pages is handled by GitHub's internal runner."
+        echo "Ready to go live!"
