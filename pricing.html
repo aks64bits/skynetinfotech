@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexible Pricing Plans | App & Web Dev | Skynetinfotech</title>
+    <meta name="description"
+        content="Transparent pricing for mobile apps and dedicated WhatsApp marketing solutions. Choose the best plan for your brand growth.">
+    <meta name="keywords" content="App Pricing, Web Development Cost, Flutter App Price, Kotlin Developer Rates">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://skynetinfotech.com/pricing.html">
+    <meta property="og:title" content="Flexible Pricing Plans | App & Web Dev | Skynetinfotech">
+    <meta property="og:description"
+        content="Transparent pricing for mobile apps and dedicated WhatsApp marketing solutions. Choose the best plan for your brand growth.">
+    <meta property="og:image" content="https://skynetinfotech.com/assets/logo.png">
+
+    <link rel="canonical" href="https://skynetinfotech.com/pricing.html" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Skynetinfotech",
+      "url": "https://skynetinfotech.com/pricing.html",
+      "description": "Transparent and flexible pricing models for business digital solutions."
+    }
+    </script>
+</head>
+
+<body>
+    <canvas id="star-canvas"></canvas>
+    <header id="main-header">
+        <nav class="container">
+            <a href="index.html" class="logo-link">
+                <div class="logo">
+                    <img src="assets/logo.png" alt="Skynetinfotech Logo">
+                    <span class="brand-name">Skynetinfotech</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li class="close-menu-li"><span class="close-menu">&times;</span></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html" class="btn btn-primary">Contact Us</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="pricing-hero" class="section-padding" style="padding-top: 150px;">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h1>Flexible <span class="gradient-text">Pricing Plans</span></h1>
+                    <p>Transparent pricing tailored for startups and global enterprises.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing-nav" class="section-padding" style="padding-bottom: 0;">
+            <div class="container">
+                <div class="pricing-tabs">
+                    <button class="tab-btn active" data-category="web">Web Development</button>
+                    <button class="tab-btn" data-category="mobile">Mobile Apps</button>
+                    <button class="tab-btn" data-category="uiux">UI / UX Design</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing-list" class="section-padding">
+            <div class="container">
+                <div class="pricing-canvas fade-in">
+                    <div id="pricing-container" class="pricing-grid">
+                        <!-- Pricing cards will be injected by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" style="background: var(--surface-dark);">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                <div class="faq-grid" style="max-width: 800px; margin: 0 auto;">
+                    <details
+                        style="margin-bottom: 1.5rem; padding: 1rem; background: var(--surface-light); border-radius: 10px;">
+                        <summary style="font-weight: 600; cursor: pointer; color: var(--primary-color);">What is the
+                            typical project timeline?</summary>
+                        <p style="margin-top: 1rem; color: var(--text-muted);">Standard websites take 2-4 weeks, while
+                            complex enterprise apps can take 12+ weeks.</p>
+                    </details>
+                    <details
+                        style="margin-bottom: 1.5rem; padding: 1rem; background: var(--surface-light); border-radius: 10px;">
+                        <summary style="font-weight: 600; cursor: pointer; color: var(--primary-color);">Do you offer
+                            recurring maintenance?</summary>
+                        <p style="margin-top: 1rem; color: var(--text-muted);">Yes, we have monthly maintenance packages
+                            to keep your site updated and secure.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo logo">
+                <img src="assets/logo.png" alt="Skynetinfotech Logo">
+                <span class="brand-name">Skynetinfotech</span>
+            </div>
+            <div class="footer-metrics">
+                <div class="live-visitors">
+                    <span class="pulse-dot"></span>
+                    <span id="visitor-count">140</span> Live Visitors
+                </div>
+                <div class="user-info" id="user-info">
+                    Detecting session info...
+                </div>
+            </div>
+            <p class="copyright">&copy; 2026 Skynetinfotech. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script src="js/script.js"></script>
+    <script src="js/pricing.js" defer></script>
+</body>
+
+</html>

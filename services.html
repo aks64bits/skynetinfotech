@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Digital Solutions | Services by Skynetinfotech</title>
+    <meta name="description"
+        content="Explore our expert services in Flutter app development, Kotlin native solutions, React Native, custom web development, and UI/UX design.">
+    <meta name="keywords" content="Flutter, Kotlin, React Native, UI/UX Design, Web Development, Cloud Solutions">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://skynetinfotech.com/services.html">
+    <meta property="og:title" content="Custom Digital Solutions | Services by Skynetinfotech">
+    <meta property="og:description"
+        content="Explore our expert services in Flutter app development, Kotlin native solutions, React Native, custom web development, and UI/UX design.">
+    <meta property="og:image" content="https://skynetinfotech.com/assets/logo.png">
+
+    <link rel="canonical" href="https://skynetinfotech.com/services.html" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Custom Digital Solutions",
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "Skynetinfotech"
+      },
+      "serviceType": ["Web Development", "Mobile App Development", "UI/UX Design"],
+      "description": "Expert digital services including Web Development, Mobile Apps, UI/UX Design, and Cloud Solutions."
+    }
+    </script>
+</head>
+
+<body>
+    <canvas id="star-canvas"></canvas>
+    <header id="main-header">
+        <nav class="container">
+            <a href="index.html" class="logo-link">
+                <div class="logo">
+                    <img src="assets/logo.png" alt="Skynetinfotech Logo">
+                    <span class="brand-name">Skynetinfotech</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li class="close-menu-li"><span class="close-menu">&times;</span></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html" class="btn btn-primary">Contact Us</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="services-hero" class="section-padding" style="padding-top: 150px;">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h1>Our Expert <span class="gradient-text">Services</span></h1>
+                    <p>Comprehensive digital solutions tailored for your business success.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="services-list" class="section-padding" style="padding-top: 0;">
+            <div class="container">
+                <div class="services-grid">
+                    <div class="service-card fade-in" data-service="web">
+                        <div class="service-icon">🌐</div>
+                        <h3>Web Development</h3>
+                        <p>High-performance, responsive websites built with the latest technologies like React, Next.js,
+                            and Node.js.</p>
+                        <button class="btn-text">View Details →</button>
+                    </div>
+                    <div class="service-card fade-in" data-service="mobile">
+                        <div class="service-icon">📱</div>
+                        <h3>Mobile Apps</h3>
+                        <p>Custom mobile applications for iOS and Android using Flutter or React Native for seamless
+                            experiences.</p>
+                        <button class="btn-text">View Details →</button>
+                    </div>
+                    <div class="service-card fade-in" data-service="uiux">
+                        <div class="service-icon">🎨</div>
+                        <h3>UI/UX Design</h3>
+                        <p>User-centric design focused on intuitive, beautiful interfaces that convert visitors into
+                            customers.</p>
+                        <button class="btn-text">View Details →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Side Sheet Detail Panel -->
+        <div id="service-overlay" class="overlay"></div>
+        <div id="service-sheet" class="side-sheet">
+            <button class="close-sheet">&times;</button>
+            <div id="sheet-content" class="sheet-body">
+                <!-- Data will be injected here -->
+            </div>
+        </div>
+
+        <section class="section-padding" style="background: var(--surface-dark);">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>Our Process</h2>
+                    <p>How we bring your ideas to life</p>
+                </div>
+                <div class="process-grid"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                    <div class="process-item fade-in">
+                        <h4 style="color: var(--primary-color); margin-bottom: 1rem;">01. Discovery</h4>
+                        <p>We start by understanding your goals, audience, and project requirements through in-depth
+                            consultation.</p>
+                    </div>
+                    <div class="process-item fade-in">
+                        <h4 style="color: var(--primary-color); margin-bottom: 1rem;">02. Strategy</h4>
+                        <p>Our team develops a comprehensive roadmap and technical architecture for your project.</p>
+                    </div>
+                    <div class="process-item fade-in">
+                        <h4 style="color: var(--primary-color); margin-bottom: 1rem;">03. Development</h4>
+                        <p>We build your solution using agile methodologies, ensuring regular updates and feedback
+                            loops.</p>
+                    </div>
+                    <div class="process-item fade-in">
+                        <h4 style="color: var(--primary-color); margin-bottom: 1rem;">04. Launch</h4>
+                        <p>After rigorous testing, we deploy your product and provide post-launch support and
+                            optimization.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo logo">
+                <img src="assets/logo.png" alt="Skynetinfotech Logo">
+                <span class="brand-name">Skynetinfotech</span>
+            </div>
+            <div class="footer-metrics">
+                <div class="live-visitors">
+                    <span class="pulse-dot"></span>
+                    <span id="visitor-count">140</span> Live Visitors
+                </div>
+                <div class="user-info" id="user-info">
+                    Detecting session info...
+                </div>
+            </div>
+            <p class="copyright">&copy; 2026 Skynetinfotech. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script src="js/script.js"></script>
+    <script src="js/services.js" defer></script>
+</body>
+
+</html>
